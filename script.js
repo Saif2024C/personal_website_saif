@@ -1,49 +1,76 @@
-const clock = document.getElementById('clock');
-const themeToggle = document.getElementById('themeToggle');
-const savedTheme = localStorage.getItem('site-theme') || 'dark';
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function tick() {
-  const now = new Date();
-  if (clock) {
-    clock.textContent = now.toLocaleString('en-GB', {
-      weekday: 'short',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
+function makePetal(className = "petal") {
+  const petal = document.createElement("div");
+  petal.className = className;
+
+  const startX = Math.random() * window.innerWidth;
+  const endX = startX + (Math.random() * 220 - 110);
+  const duration = 7 + Math.random() * 6;
+  const delay = Math.random() * 2;
+  const rot = (Math.random() * 720 - 360) + "deg";
+
+  petal.style.setProperty("--x-start", `${startX}px`);
+  petal.style.setProperty("--x-end", `${endX}px`);
+  petal.style.setProperty("--rot", rot);
+  petal.style.animationDuration = `${duration}s`;
+  petal.style.animationDelay = `${delay}s`;
+
+  document.body.appendChild(petal);
+
+  const removeAfter = (duration + delay) * 1000 + 1000;
+  setTimeout(() => petal.remove(), removeAfter);
+}
+
+function spawnBurst(x, y) {
+  for (let i = 0; i < 18; i++) {
+    const petal = document.createElement("div");
+    petal.className = "burst-petal";
+
+    const angle = (Math.PI * 2 * i) / 18;
+    const distance = 40 + Math.random() * 80;
+    const dx = Math.cos(angle) * distance + (Math.random() * 20 - 10);
+    const dy = Math.sin(angle) * distance + (Math.random() * 20 - 10);
+
+    petal.style.left = `${x}px`;
+    petal.style.top = `${y}px`;
+    petal.style.setProperty("--dx", `${dx}px`);
+    petal.style.setProperty("--dy", `${dy}px`);
+
+    document.body.appendChild(petal);
+    setTimeout(() => petal.remove(), 950);
   }
 }
 
-function setTheme(theme) {
-  document.documentElement.style.setProperty('--bg', theme === 'paper' ? '#f5efe7' : '#0f0d14');
-  document.documentElement.style.setProperty('--bg2', theme === 'paper' ? '#f0e8dc' : '#15111f');
-  document.documentElement.style.setProperty('--panel', theme === 'paper' ? '#fffaf4' : '#1a1626');
-  document.documentElement.style.setProperty('--panel2', theme === 'paper' ? '#f4ede1' : '#201a2e');
-  document.documentElement.style.setProperty('--text', theme === 'paper' ? '#1c1820' : '#f4ecff');
-  document.documentElement.style.setProperty('--muted', theme === 'paper' ? '#5f5868' : '#b6afc7');
-  document.documentElement.style.setProperty('--line', theme === 'paper' ? 'rgba(28,24,32,0.12)' : 'rgba(255,255,255,0.11)');
-  document.documentElement.style.setProperty('--link', theme === 'paper' ? '#7c4cff' : '#ef77ff');
-  localStorage.setItem('site-theme', theme);
-  if (themeToggle) {
-    themeToggle.textContent = theme === 'paper' ? 'switch to dark' : 'switch theme';
+if (!prefersReducedMotion) {
+  for (let i = 0; i < 14; i++) {
+    setTimeout(() => makePetal(), i * 250);
   }
+
+  setInterval(() => {
+    makePetal();
+  }, 700);
 }
 
-tick();
-setInterval(tick, 1000);
-setTheme(savedTheme);
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("a");
+  if (!link) return;
 
-if (themeToggle) {
-  themeToggle.addEventListener('click', () => {
-    const current = localStorage.getItem('site-theme') || 'dark';
-    setTheme(current === 'dark' ? 'paper' : 'dark');
-  });
-}
+  const href = link.getAttribute("href");
+  if (!href || href.startsWith("#") || link.target === "_blank" || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+    return;
+  }
 
-const updatedDate = document.getElementById('updatedDate');
-if (updatedDate) {
-  updatedDate.textContent = new Intl.DateTimeFormat('en-GB', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric'
-  }).format(new Date());
-}
+  e.preventDefault();
+
+  const x = e.clientX || window.innerWidth / 2;
+  const y = e.clientY || window.innerHeight / 2;
+
+  if (!prefersReducedMotion) {
+    spawnBurst(x, y);
+  }
+
+  setTimeout(() => {
+    window.location.href = link.href;
+  }, 180);
+});
