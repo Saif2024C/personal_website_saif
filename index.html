@@ -1,0 +1,184 @@
+<div id="topBar">
+  <div>Oxford cyber hardware notes</div>
+  <div id="clock">loading…</div>
+</div>
+
+<div id="container">
+  <div id="headerArea">
+    <div id="header"></div>
+    <div id="titleBlock">
+      <div class="siteStamp">home page / last updated <span id="updatedDate">today</span></div>
+      <h1>this is my website</h1>
+      <p>
+        I’m a UK-based student interested in hardware, CPU architecture, vectorization, HPC, distributed systems, AI, robotics, and performance engineering.
+        This page is my little corner of the internet for notes, projects, and things I am thinking about right now.
+      </p>
+      <div class="metaLine">Please read this first: a personal homepage is allowed to be a bit strange.</div>
+    </div>
+
+    <nav id="navbar">
+      <ul>
+        <li><a href="#home">home</a></li>
+        <li><a href="#about">about</a></li>
+        <li><a href="#now">now</a></li>
+        <li><a href="#posts">posts</a></li>
+        <li><a href="#misc">misc</a></li>
+        <li><a href="#links">links</a></li>
+        <li><a href="#email">email</a></li>
+        <li><a href="#rss">rss</a></li>
+        <li><button type="button" id="themeToggle">switch theme</button></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div id="flex" class="content">
+    <aside id="leftSidebar">
+      <div class="sidebarCard">
+        <h2>updates</h2>
+        <div class="box">
+          <p class="mini">site log</p>
+          <ul>
+            <li>working on thesis notes</li>
+            <li>cleaning up layout details</li>
+            <li>adding more text pages</li>
+            <li>collecting useful links again</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebarCard">
+        <h2>status</h2>
+        <p class="smallnote">currently:</p>
+        <p>reduced precision computation, FP16, AVX-512, Monte Carlo methods</p>
+        <p class="smallnote">reading:</p>
+        <p>architecture papers and performance blogs</p>
+      </div>
+
+      <div class="sidebarCard">
+        <h2>pages</h2>
+        <ul>
+          <li><a href="#about">about</a></li>
+          <li><a href="#now">now</a></li>
+          <li><a href="#posts">posts</a></li>
+          <li><a href="#misc">misc</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main>
+      <div class="section" id="home">
+        <h2>home</h2>
+        <p>
+          This site should feel like a real person’s homepage, not a portfolio. Short sections. Simple layout. A little personality in the wording.
+        </p>
+        <p>
+          The vibe I want is somewhere between Andrei’s tidy personal site and Sadgrl’s useful handmade Neocities pages: clear, low-drama, and lived in.
+        </p>
+        <div class="tagrow">
+          <span class="tag">hardware</span>
+          <span class="tag">HPC</span>
+          <span class="tag">systems</span>
+          <span class="tag">research</span>
+          <span class="tag">old internet</span>
+        </div>
+      </div>
+
+      <div class="section" id="about">
+        <h2>about</h2>
+        <p>
+          I like websites that say enough and no more. A page should feel like someone actually keeps it updated, even if only every so often.
+        </p>
+        <p>
+          I’m interested in CPUs, computer architecture, vectorization, performance engineering, distributed systems, AI, and robotics.
+        </p>
+      </div>
+
+      <div class="section" id="now">
+        <h2>now</h2>
+        <p><strong>current project:</strong> reduced precision computation and performance analysis</p>
+        <p><strong>current obsession:</strong> how FP16, AVX-512, and Monte Carlo methods change the shape of the work</p>
+        <p><strong>current vibe:</strong> technical, quiet, slightly sleepy, still curious</p>
+      </div>
+
+      <div class="section" id="posts">
+        <h2>posts</h2>
+        <p class="mini">short project notes and lab-style writing</p>
+        <ul class="postlist">
+          <li><a href="#">reduced precision and error tradeoffs</a><div class="metaLine">created january 2026</div></li>
+          <li><a href="#">AVX-512 experiments</a><div class="metaLine">benchmarks / implementation notes</div></li>
+          <li><a href="#">Monte Carlo performance quirks</a><div class="metaLine">observations / plots / questions</div></li>
+        </ul>
+      </div>
+
+      <div class="section" id="misc">
+        <h2>misc</h2>
+        <p>
+          This is where random things can live: currently reading, favourite hardware, little thoughts, button collections, and things that do not deserve their own page.
+        </p>
+        <div class="contentNote">
+          <p class="mini">favourite hardware / favourite feeling</p>
+          <p class="quote">a machine that exposes enough detail to be interesting, but not so much that the abstraction collapses.</p>
+        </div>
+      </div>
+
+      <div class="section" id="links">
+        <h2>links</h2>
+        <p>
+          <a href="#">papers</a> / <a href="#">blogs</a> / <a href="#">tools</a> / <a href="#">buttons</a> / <a href="#">web rings</a>
+        </p>
+      </div>
+
+      <div class="section" id="email">
+        <h2>email</h2>
+        <p>
+          I prefer being contacted by email. It fits the tone of the site better than turning everything into a social feed.
+        </p>
+        <p><a href="mailto:you@example.com">you@example.com</a></p>
+      </div>
+
+      <div class="section" id="rss">
+        <h2>rss</h2>
+        <p>
+          I like RSS because it feels like a sane way to keep a website alive.
+        </p>
+        <p><a href="#">subscribe to rss</a></p>
+      </div>
+    </main>
+
+    <aside id="rightSidebar">
+      <div class="sidebarCard">
+        <h2>current reading</h2>
+        <div class="box">
+          <p>architecture papers, numerical methods, and performance writeups</p>
+        </div>
+      </div>
+
+      <div class="sidebarCard">
+        <h2>buttons</h2>
+        <ul>
+          <li><a href="#">88x31</a></li>
+          <li><a href="#">my button</a></li>
+          <li><a href="#">other people's buttons</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebarCard">
+        <h2>guestbook</h2>
+        <div class="guestbook">
+          <p class="mini">leave a note</p>
+          <label>
+            name
+            <input type="text" placeholder="your name" />
+          </label>
+          <label>
+            message
+            <textarea rows="5" placeholder="hello from the old internet"></textarea>
+          </label>
+          <button type="button">sign guestbook</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div id="footer">CC0 Public Domain energy • handmade CSS • no startup glow</div>
+</div>
